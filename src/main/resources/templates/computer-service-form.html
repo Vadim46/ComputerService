@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <div
+            class="bg-image"
+            style="
+    background-image: url('https://4.downloader.disk.yandex.ru/preview/779d3d697fb7b2c599572304a8e6deb40e5c794b7ab9b76eaecbfa6059b5b3d3/inf/mrzrsdJqj8S6DxYenhH0B-I5VuVhu-CiHZEhTULyh2PPhic67dqB68K6SVAI9Yv3rVp8LFtGPyAae5xDWBkaoA%3D%3D?uid=94345924&filename=1675493607_gas-kvas-com-p-fail-fonovogo-risunka-47.jpg&disposition=inline&hash=&limit=0&content_type=image%2Fjpeg&owner_uid=94345924&tknv=v2&size=1872x964');
+    background-size: cover;
+    height: 100vh;
+"
+    <meta charset="UTF-8">
+    <title>Добавить новую услугу</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}"/>
+</head>
+<body>
+
+<div class="container-fluid">
+    <div class="text-center"><h2>Добавить новую услугу или редактирование</h2></div>
+
+    <form th:action="@{/computer-service/save}" method="post" th:object="${computerService}"
+          style="max-width: 500px; margin: 0 auto;">
+        <input type="hidden" th:field="*{id}">
+        <div class="border border-secondary rounded p-3">
+            <div class="form-group row">
+                <label class="col-sm-4 col-form-label">Наименование услуги:</label>
+                <div class="col-sm-8">
+                    <input type="text" th:field="*{name}" class="form-control" required minlength="2" maxlength="45"/>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-4 col-form-label">Стоймость</label>
+                <div class="col-sm-8">
+                    <input type="number" th:field="*{price}" class="form-control" required step="any"/>
+                </div>
+            </div>
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary m-2">Save</button>
+                <button type="button" class="btn btn-secondary m-2" onclick="cancelForm()">Cancel</button>
+            </div>
+
+
+        </div>
+
+
+    </form>
+</div>
+<script type="text/javascript">
+    function cancelForm() {
+        window.location = "[[@{/computer-service}]]";
+
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <style>
+        body {
+            width: 100%;
+            min-height: 100vh;
+            background-color: #f5f6fb;
+        }
+section{
+    font-family: "Karla", sans-serif;
+    font-size: 20px;
+    color: black;
+}
+        /* Основные свойства для бокового меню */
+        .menu {
+            display: flex;
+            flex-direction: column; /* размещаем элементы к колонку */
+            width: 240px;
+            min-height: 100vh; /* на всю высоту экрана */
+            position: fixed; /* чтобы меню было фиксированным */
+            top: 0; /* прижимаем к верхнему */
+            left: 0; /* .. и нижнему краю */
+            background-color: #343951;
+            box-shadow: 4px 4px 8px 0 rgba(34, 60, 80, 0.2); /* задаем тень, чтобы отделить от фона */
+        }
+
+        /* Свойства для контента */
+        .content {
+            padding-left: 280px; /* отступ от бокового меню 240px + 40px */
+            padding-top: 40px;
+            padding-right: 40px;
+            padding-bottom: 40px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center; /* центрируем логотип с текстом */
+            color: #fff;
+            font-size: 24px;
+            text-decoration: none;
+            font-family: "Rubik", sans-serif;
+            font-weight: bold;
+        }
+
+        /* Задаем псеводоэлемент для иконки */
+        .logo:before {
+            content: url(./img/logo.svg); /* путь от иконки-лого */
+            padding-right: 8px; /* немного отступим справа */
+        }
+
+        /* Позиционирование лого в меню */
+        .menu__logo {
+            padding-top: 50px;
+            padding-left: 30px;
+            margin-bottom: 59px;
+        }
+
+        /* Позиционирование элементов в меню */
+        .menu__link,
+        .admin__link {
+            padding-left: 30px;
+        }
+
+        /* Свойства для элементов меню */
+        .link {
+            position: relative; /* чтобы задать потом псевдоэлемент */
+            display: flex; /* чтобы элемент тянулся на всю ширину */
+            align-items: center; /* по центру текст и иконка */
+            height: 45px; /* высота элемента 45px */
+            text-decoration: none;
+        }
+
+        /* Свойства иконки внутри ссылки */
+        .link > img {
+            width: 25px;
+            margin-right: 20px;
+        }
+
+        /* Свойства текста внутри ссылки */
+        .link > span {
+            font-family: "Karla", sans-serif;
+            font-size: 20px;
+            color: #fff;
+        }
+
+        /* При наведении на ссылку - полупрозрачный белый фон */
+        .link:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Выводим оранжевую линию слева */
+        .link:hover:before {
+            display: flex;
+        }
+
+        /* Создаем оранжевую линию слева */
+        .link:before {
+            content: "";
+            display: none;
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 5px;
+            height: 100%;
+            background-color: #ffa000;
+        }
+
+        /* Позиционирование админ-меню */
+        .menu__admin {
+            margin-top: auto;
+            padding-bottom: 40px;
+        }
+    </style>
+    <div
+            class="bg-image"
+            style="
+    background-image: url('https://4.downloader.disk.yandex.ru/preview/779d3d697fb7b2c599572304a8e6deb40e5c794b7ab9b76eaecbfa6059b5b3d3/inf/mrzrsdJqj8S6DxYenhH0B-I5VuVhu-CiHZEhTULyh2PPhic67dqB68K6SVAI9Yv3rVp8LFtGPyAae5xDWBkaoA%3D%3D?uid=94345924&filename=1675493607_gas-kvas-com-p-fail-fonovogo-risunka-47.jpg&disposition=inline&hash=&limit=0&content_type=image%2Fjpeg&owner_uid=94345924&tknv=v2&size=1872x964');
+    background-size: cover;
+    height: 100vh;
+"
+    <link rel="stylesheet" href="user_form.css">
+    <meta charset="UTF-8">
+    <title>Выездной ремонт ПК и ноутбуков с гарантией</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" />
+
+
+
+</head>
+<body>
+
+
+
+<div class="container-fluid text-center">
+    <h1>Выездной ремонт ПК и ноутбуков с гарантией</h1>
+</div>
+<section class="menu">
+    <!-- Логотип -->
+    <a href="#" class="menu__logo logo">Меню</a>
+    <!-- Основное меню -->
+    <ul class="menu__list list">
+        <!-- Элемент меню -->
+        <li class="menu__item item">
+            <!-- Ссылка меню -->
+            <a href="#" class="menu__link link">
+
+                <span>Главная</span>
+            </a>
+        </li>
+        <li class="menu__item item">
+            <a th:href="@{/computer-service}" class="menu__link link">
+
+                <span>Услуги</span>
+            </a>
+        </li>
+        <li class="menu__item item">
+            <a th:href="@{/about-us}" class="menu__link link">
+
+                <span>О нас</span>
+            </a>
+        </li>
+        <li class="menu__item item">
+            <a th:href="@{/contacts-us}" class="menu__link link">
+
+                <span>Контакты</span>
+            </a>
+        </li>
+        <li class="menu__item item">
+            <a th:href="@{/Order service-us}" class="menu__link link">
+
+                <span>Заказать услугу</span>
+            </a>
+        </li>
+
+
+    </ul>
+
+</section>
+<section class="content">
+    <h2>Преимущества ремонта компьютера в профессиональном компьютерном сервисе</h2>
+    <p></p>
+    <p>Вы столкнулись с проблемой – компьютер/ноутбук сломался или работает нестабильно.</p>
+
+    <p>— Что делать?</p>
+
+   <p>Самый простой и напрашивающийся ответ – частные объявления. Огромное количество частных мастеров гарантирует вернуть работоспособность вашему ПК.</p>
+
+    <p>Действительно, найти объявление можно в смартфоне, вызвать на дом, цены ниже, но насколько это безопасно и оправдано?</p>
+    <p></p>
+    <p></p>
+
+    <h4>Вызвав специалиста по частному объявлению есть риск столкнуться с:</h4>
+    <p></p>
+    <p>1. Отсутствием информации о квалификации мастера.</p>
+    <p></p>
+    <p>2. Не предоставлением гарантии или отказом от выполнения гарантийных обязательств.</p>
+    <p></p>
+    <p>3. Трудностями починки ноутбука/ПК без специализированного оборудования.</p>
+    <p></p>
+    <p>4. Невозможностью замены вышедших из строя комплектующих.</p>
+    <p></p>
+    <p></p>
+    <p>Обратившись в специализированный сервисный центр, напротив, вы получаете полный комплекс профессиональных услуг, гарантии качества и, главное, уверенность в 100% восстановлении работоспособности компьютера или ноутбука.</p>
+</section>
+
+</body>
+</html>
